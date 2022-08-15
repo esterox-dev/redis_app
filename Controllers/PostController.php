@@ -24,7 +24,7 @@ class PostController
        foreach ($data as $key => $value) {
            $role = explode('_', $key)[0];
            $this->redis->set($value, $role);
-           $this->updateAppUserRole($value, $role);
+//           $this->updateAppUserRole($value, $role);
        }
        return ['status' => true];
     }
