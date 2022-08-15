@@ -8,7 +8,7 @@ class GetController
 
     public function __construct()
     {
-        $this->redis = new Redis();
+        $this->redis = new redis();
         $this->redis->connect(SETTINGS['redis_host'], SETTINGS['redis_port']);
         $this->redis->auth(SETTINGS['redis_password']);
     }
