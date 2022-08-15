@@ -10,7 +10,7 @@ class PostController
     {
         $this->redis = new Redis();
         $this->redis->connect(SETTINGS['redis_host'], SETTINGS['redis_port']);
-//        $this->redis->auth(SETTINGS['redis_password']);
+        $this->redis->auth(SETTINGS['redis_password']);
     }
 
     /**
