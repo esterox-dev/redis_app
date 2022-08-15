@@ -22,7 +22,7 @@ class GetController
     public function get_by_key($key)
     {
         if (is_string($key)) {
-            $appName = explode('_', $key)[0];
+            $appName = explode('&&', $key)[0];
             return [$appName => $this->redis->get($key)];
         }
         return false;
@@ -37,8 +37,8 @@ class GetController
     public function get_for_all_companies($key)
     {
         $data = [];
-        foreach (COMPANIES as $company) {
-            $data[$company] = $this->redis->get($company . '_' . $key);
+        foreach (APPS as $company) {
+            $data[$company] = $this->redis->get($company . '&&' . $key);
         }
         return $data;
     }

@@ -1,12 +1,17 @@
 <?php
 
 const SETTINGS = [
-    'redis_host' => '127.0.0.1',
-    'redis_port' => '6379',
-    'redis_password' => '123123'
+    'redis_host' => 'h',
+    'redis_port' => 'p',
+    'redis_password' => 'auth'
 ];
 
-const COMPANIES = [
+const APPS = [
     'hiring',
     'training'
+];
+
+const APPS_UPDATING_URLS = [
+    'hiring' => 'url//',
+    'training' => 'url//',
 ];
