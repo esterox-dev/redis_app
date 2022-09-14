@@ -42,4 +42,19 @@ class GetController
         }
         return $data;
     }
+
+    /**
+     * Get value from redis by key
+     *
+     * @param $key
+     * @return mixed
+     * @throws RedisException
+     */
+    public function get_by_company_key($key)
+    {
+        if (is_string($key)) {
+            return $this->redis->get($key);
+        }
+        return false;
+    }
 }

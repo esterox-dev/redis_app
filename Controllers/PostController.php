@@ -75,4 +75,50 @@ class PostController
 
         return ['app' => $app[0], 'message' => $response->message, 'status' => $response->status];
     }
+
+    /**
+     * Set value on redis
+     *
+     * @param $data
+     * @return mixed
+     * @throws RedisException
+     */
+    public function set_company_data($data)
+    {
+        header("Content-Type: application/json");
+
+        if ($data && is_array($data)) {
+            foreach ($data as $key => $value) {
+                $this->redis->set($key, $value);
+            }
+            echo json_encode(['status' => true, 'message' => 'Added company data']);
+            exit;
+        }
+        echo json_encode(['status' => false, 'message' => 'wrong data']);
+        exit;
+    }
+
+    /**
+     * Delete value on redis
+     *
+     * @param $data
+     * @return mixed
+     * @throws RedisException
+     */
+    public function delete_company_data($data)
+    {
+        header("Content-Type: application/json");
+
+        if ($data && is_array($data)) {
+            foreach ($data as $key => $value) {
+                if (is_string($value)) {
+                    $this->redis->del($value);
+                }
+            }
+            echo json_encode(['status' => true, 'message' => 'Deleted company data']);
+            exit;
+        }
+        echo json_encode(['status' => false, 'message' => 'wrong data']);
+        exit;
+    }
 }
